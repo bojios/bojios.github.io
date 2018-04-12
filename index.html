@@ -23,7 +23,7 @@ a:hover {
 }  
     
 /* Create a Parallax Effect */
-.bgimg-1, .bgimg-2, .bgimg-3 {
+.bgimg-1, .bgimg-2, .bgimg-3, .bgimg-4{
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -44,7 +44,12 @@ a:hover {
 
 /* Third image (Contact) */
 .bgimg-3 {
-    background-image: url("https://www.w3schools.com/w3images/parallax3.jpg");
+    background-image: url("https://cdn.pixabay.com/photo/2016/08/06/00/07/lake-1573645_960_720.jpg");
+    min-height: 400px;
+}
+
+.bgimg-4 {
+    background-image: url("https://cdn.pixabay.com/photo/2016/07/22/16/29/fog-1535201_960_720.jpg");
     min-height: 400px;
 }
 
@@ -78,10 +83,10 @@ a:hover {
 
   <!-- Navbar on small screens -->
   <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium">
-    <a href="#about" class="w3-bar-item w3-button" onclick="toggleFunction()">ABOUT</a>
-    <a href="#portfolio" class="w3-bar-item w3-button" onclick="toggleFunction()">DEPRESSION</a>
-    <a href="#contact" class="w3-bar-item w3-button" onclick="toggleFunction()">CONTACT</a>
-    <a href="#" class="w3-bar-item w3-button">SEARCH</a>
+    <a href="#lifeline" class="w3-bar-item w3-button" onclick="toggleFunction()">Suicide Prevention Lifeline</a>
+    <a href="#depression" class="w3-bar-item w3-button" onclick="toggleFunction()">DEPRESSION</a>
+    <a href="#anxiety" class="w3-bar-item w3-button" onclick="toggleFunction()">ANXIETY</a>
+    <a href="#coping" class="w3-bar-item w3-button" onclick="toggleFunction()">COPING</a>
   </div>
 </div>
 
@@ -137,7 +142,7 @@ a:hover {
 </div>
 
 <!-- Third Parallax Image with Portfolio Text -->
-<div class="bgimg-2 w3-display-container w3-opacity-min" id="anxiety">
+<div class="bgimg-3 w3-display-container w3-opacity-min" id="anxiety">
   <div class="w3-display-middle">
     <span class="w3-xxlarge w3-text-white w3-wide">ANXIETY</span>
   </div>
@@ -214,7 +219,7 @@ a:hover {
 </div>
     
 <!-- Fourth Parallax Image with Portfolio Text -->
-<div class="bgimg-2 w3-display-container w3-opacity-min" id="coping">
+<div class="bgimg-4 w3-display-container w3-opacity-min" id="coping">
   <div class="w3-display-middle">
     <span class="w3-xxlarge w3-text-white w3-wide">COPING MECHANISMS</span>
   </div>
