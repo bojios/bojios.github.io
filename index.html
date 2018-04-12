@@ -7,197 +7,288 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
-body {font-family: "Lato", sans-serif}
-.mySlides {display: none}
+body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif;}
+body, html {
+    height: 100%;
+    color: #777;
+    line-height: 1.8;
+}
+
+a {
+   text-decoration: underline;
+}
+a:hover {
+    text-decoration:none;
+    cursor:pointer;
+}  
+    
+/* Create a Parallax Effect */
+.bgimg-1, .bgimg-2, .bgimg-3 {
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* First image (Logo. Full height) */
+.bgimg-1 {
+    background-image: url('https://www.w3schools.com/w3images/parallax1.jpg');
+    min-height: 100%;
+}
+
+/* Second image (Portfolio) */
+.bgimg-2 {
+    background-image: url("https://www.w3schools.com/w3images/parallax2.jpg");
+    min-height: 400px;
+}
+
+/* Third image (Contact) */
+.bgimg-3 {
+    background-image: url("https://www.w3schools.com/w3images/parallax3.jpg");
+    min-height: 400px;
+}
+
+.w3-wide {letter-spacing: 10px;}
+.w3-hover-opacity {cursor: pointer;}
+
+/* Turn off parallax scrolling for tablets and phones */
+@media only screen and (max-device-width: 1024px) {
+    .bgimg-1, .bgimg-2, .bgimg-3 {
+        background-attachment: scroll;
+    }
+}
 </style>
 <body>
 
-<!-- Navbar -->
+<!-- Navbar (sit on top) -->
 <div class="w3-top">
-  <div class="w3-bar w3-black w3-card">
-    <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-    <a href="#" class="w3-bar-item w3-button w3-padding-large">HOME</a>
-    <a href="#band" class="w3-bar-item w3-button w3-padding-large w3-hide-small">BAND</a>
-    <a href="#tour" class="w3-bar-item w3-button w3-padding-large w3-hide-small">TOUR</a>
-    <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hide-small">CONTACT</a>
-    <div class="w3-dropdown-hover w3-hide-small">
-      <button class="w3-padding-large w3-button" title="More">MORE <i class="fa fa-caret-down"></i></button>     
-      <div class="w3-dropdown-content w3-bar-block w3-card-4">
-        <a href="#" class="w3-bar-item w3-button">Merchandise</a>
-        <a href="#" class="w3-bar-item w3-button">Extras</a>
-        <a href="#" class="w3-bar-item w3-button">Media</a>
-      </div>
-    </div>
-    <a href="javascript:void(0)" class="w3-padding-large w3-hover-red w3-hide-small w3-right"><i class="fa fa-search"></i></a>
+  <div class="w3-bar" id="myNavbar">
+    <a class="w3-bar-item w3-button w3-hover-black w3-hide-medium w3-hide-large w3-right" href="javascript:void(0);" onclick="toggleFunction()" title="Toggle Navigation Menu">
+      <i class="fa fa-bars"></i>
+    </a>
+    <a href="#home" class="w3-bar-item w3-button">HOME</a>
+    <a href="#lifeline" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-phone"></i> Suicide Prevention Lifeline</a>
+    <a href="#depression" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-hotel"></i> DEPRESSION</a>
+      <a href="#anxiety" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-clock-o"></i> ANXIETY</a>
+    <a href="#coping" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-life-saver"></i> COPING</a>
+    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-red">
+      <i class="fa fa-search"></i>
+    </a>
+  </div>
+
+  <!-- Navbar on small screens -->
+  <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium">
+    <a href="#about" class="w3-bar-item w3-button" onclick="toggleFunction()">ABOUT</a>
+    <a href="#portfolio" class="w3-bar-item w3-button" onclick="toggleFunction()">DEPRESSION</a>
+    <a href="#contact" class="w3-bar-item w3-button" onclick="toggleFunction()">CONTACT</a>
+    <a href="#" class="w3-bar-item w3-button">SEARCH</a>
   </div>
 </div>
 
-<!-- Navbar on small screens -->
-<div id="navDemo" class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:46px">
-  <a href="#band" class="w3-bar-item w3-button w3-padding-large">BAND</a>
-  <a href="#tour" class="w3-bar-item w3-button w3-padding-large">TOUR</a>
-  <a href="#contact" class="w3-bar-item w3-button w3-padding-large">CONTACT</a>
-  <a href="#" class="w3-bar-item w3-button w3-padding-large">MERCH</a>
+<!-- First Parallax Image with Logo Text -->
+<div class="bgimg-1 w3-display-container w3-opacity-min" id="home">
+  <div class="w3-display-middle" style="white-space:nowrap;">
+    <span class="w3-center w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity">Suicide and Anxiety <span class="w3-hide-small">Background and Prevention</span></span>
+  </div>
 </div>
 
-<!-- Page content -->
-<div class="w3-content" style="max-width:2000px;margin-top:46px">
-
-  <!-- Automatic Slideshow Images -->
-  <div class="mySlides w3-display-container w3-center">
-    <img src="/w3images/la.jpg" style="width:100%">
-    <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
-      <h3>Los Angeles</h3>
-      <p><b>We had the best time playing at Venice Beach!</b></p>   
-    </div>
-  </div>
-  <div class="mySlides w3-display-container w3-center">
-    <img src="/w3images/ny.jpg" style="width:100%">
-    <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
-      <h3>New York</h3>
-      <p><b>The atmosphere in New York is lorem ipsum.</b></p>    
-    </div>
-  </div>
-  <div class="mySlides w3-display-container w3-center">
-    <img src="/w3images/chicago.jpg" style="width:100%">
-    <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
-      <h3>Chicago</h3>
-      <p><b>Thank you, Chicago - A night we won't forget.</b></p>    
-    </div>
-  </div>
-
-  <!-- The Band Section -->
-  <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="band">
-    <h2 class="w3-wide">THE BAND</h2>
-    <p class="w3-opacity"><i>We love music</i></p>
-    <p class="w3-justify">We have created a fictional band website. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-      ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur
-      adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-    <div class="w3-row w3-padding-32">
-      <div class="w3-third">
-        <p>Name</p>
-        <img src="/w3images/bandmember.jpg" class="w3-round w3-margin-bottom" alt="Random Name" style="width:60%">
-      </div>
-      <div class="w3-third">
-        <p>Name</p>
-        <img src="/w3images/bandmember.jpg" class="w3-round w3-margin-bottom" alt="Random Name" style="width:60%">
-      </div>
-      <div class="w3-third">
-        <p>Name</p>
-        <img src="/w3images/bandmember.jpg" class="w3-round" alt="Random Name" style="width:60%">
-      </div>
-    </div>
-  </div>
-
-  <!-- The Tour Section -->
-  <div class="w3-black" id="tour">
-    <div class="w3-container w3-content w3-padding-64" style="max-width:800px">
-      <h2 class="w3-wide w3-center">TOUR DATES</h2>
-      <p class="w3-opacity w3-center"><i>Remember to book your tickets!</i></p><br>
-
-      <ul class="w3-ul w3-border w3-white w3-text-grey">
-        <li class="w3-padding">September <span class="w3-tag w3-red w3-margin-left">Sold out</span></li>
-        <li class="w3-padding">October <span class="w3-tag w3-red w3-margin-left">Sold out</span></li>
-        <li class="w3-padding">November <span class="w3-badge w3-right w3-margin-right">3</span></li>
-      </ul>
-
-      <div class="w3-row-padding w3-padding-32" style="margin:0 -16px">
-        <div class="w3-third w3-margin-bottom">
-          <img src="/w3images/newyork.jpg" alt="New York" style="width:100%" class="w3-hover-opacity">
-          <div class="w3-container w3-white">
-            <p><b>New York</b></p>
-            <p class="w3-opacity">Fri 27 Nov 2016</p>
-            <p>Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
-            <button class="w3-button w3-black w3-margin-bottom" onclick="document.getElementById('ticketModal').style.display='block'">Buy Tickets</button>
-          </div>
-        </div>
-        <div class="w3-third w3-margin-bottom">
-          <img src="/w3images/paris.jpg" alt="Paris" style="width:100%" class="w3-hover-opacity">
-          <div class="w3-container w3-white">
-            <p><b>Paris</b></p>
-            <p class="w3-opacity">Sat 28 Nov 2016</p>
-            <p>Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
-            <button class="w3-button w3-black w3-margin-bottom" onclick="document.getElementById('ticketModal').style.display='block'">Buy Tickets</button>
-          </div>
-        </div>
-        <div class="w3-third w3-margin-bottom">
-          <img src="/w3images/sanfran.jpg" alt="San Francisco" style="width:100%" class="w3-hover-opacity">
-          <div class="w3-container w3-white">
-            <p><b>San Francisco</b></p>
-            <p class="w3-opacity">Sun 29 Nov 2016</p>
-            <p>Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
-            <button class="w3-button w3-black w3-margin-bottom" onclick="document.getElementById('ticketModal').style.display='block'">Buy Tickets</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Ticket Modal -->
-  <div id="ticketModal" class="w3-modal">
-    <div class="w3-modal-content w3-animate-top w3-card-4">
-      <header class="w3-container w3-teal w3-center w3-padding-32"> 
-        <span onclick="document.getElementById('ticketModal').style.display='none'" 
-       class="w3-button w3-teal w3-xlarge w3-display-topright">×</span>
-        <h2 class="w3-wide"><i class="fa fa-suitcase w3-margin-right"></i>Tickets</h2>
-      </header>
-      <div class="w3-container">
-        <p><label><i class="fa fa-shopping-cart"></i> Tickets, $15 per person</label></p>
-        <input class="w3-input w3-border" type="text" placeholder="How many?">
-        <p><label><i class="fa fa-user"></i> Send To</label></p>
-        <input class="w3-input w3-border" type="text" placeholder="Enter email">
-        <button class="w3-button w3-block w3-teal w3-padding-16 w3-section w3-right">PAY <i class="fa fa-check"></i></button>
-        <button class="w3-button w3-red w3-section" onclick="document.getElementById('ticketModal').style.display='none'">Close <i class="fa fa-remove"></i></button>
-        <p class="w3-right">Need <a href="#" class="w3-text-blue">help?</a></p>
-      </div>
-    </div>
-  </div>
-
-  <!-- The Contact Section -->
-  <div class="w3-container w3-content w3-padding-64" style="max-width:800px" id="contact">
-    <h2 class="w3-wide w3-center">CONTACT</h2>
-    <p class="w3-opacity w3-center"><i>Fan? Drop a note!</i></p>
-    <div class="w3-row w3-padding-32">
-      <div class="w3-col m6 w3-large w3-margin-bottom">
-        <i class="fa fa-map-marker" style="width:30px"></i> Chicago, US<br>
-        <i class="fa fa-phone" style="width:30px"></i> Phone: +00 151515<br>
-        <i class="fa fa-envelope" style="width:30px"> </i> Email: mail@mail.com<br>
-      </div>
-      <div class="w3-col m6">
-        <form action="/action_page.php" target="_blank">
-          <div class="w3-row-padding" style="margin:0 -16px 8px -16px">
-            <div class="w3-half">
-              <input class="w3-input w3-border" type="text" placeholder="Name" required name="Name">
-            </div>
-            <div class="w3-half">
-              <input class="w3-input w3-border" type="text" placeholder="Email" required name="Email">
-            </div>
-          </div>
-          <input class="w3-input w3-border" type="text" placeholder="Message" required name="Message">
-          <button class="w3-button w3-black w3-section w3-right" type="submit">SEND</button>
-        </form>
-      </div>
-    </div>
-  </div>
-  
-<!-- End Page Content -->
+<!-- Container (About Section) -->
+<div class="w3-content w3-container w3-padding-64" id="lifeline">
+  <h2 class="w3-center">National Suicide Prevention Lifeline</h3>
+  <p class="w3-center"><em>“We can all help prevent suicide. The Lifeline provides 24/7, free and confidential support for people in distress, prevention and crisis resources for you or your loved ones, and best practices for professionals.”</em></p>
+  <h6 class="w3-center"><a href="https://suicidepreventionlifeline.org/">Suicide Prevention Lifeline Website</a></h6>
+  <h6 class="w3-center">Suicide Prevention Lifeline Phone Number: <a href="tel:+1-800-273-8255">1-800-273-8255</a></h6>
+  <hr>
+  <h5 class="w3-center"></h5>
+  <p> If you do not wish to use the Suicide Prevention Lifeline, you can talk to someone at ECU. As a student at East Carolina University, we are given access to the Center for Counselling and Student Development. Located on 10th street at the back side of Umstead Hall, this department’s job is to assist students through any issues (every day to mental health) they are facing during their time at ECU. The services that they provide are counseling (one on one, couple, and group), crisis prevention, and psychiatry help to those who need it. To schedule appointments or call for crisis help their number is <a href="tel:+1-252-328-6661">252-328-6661</a>.</p>
 </div>
+
+<!-- Second Parallax Image with Portfolio Text -->
+<div class="bgimg-2 w3-display-container w3-opacity-min" id="depression">
+  <div class="w3-display-middle">
+    <span class="w3-xxlarge w3-text-white w3-wide">DEPRESSION</span>
+  </div>
+</div>
+
+<!-- Container (Depression Section) -->
+<div class="w3-content w3-container w3-padding-64">
+    <p>Depression is a mental illness that has a significant effect on a person’s ability to function normally and is marked by persistent feelings of sadness, emptiness, worthlessness, and hopelessness. These feelings can continue for years if left untreated. It is estimated that up to 15% of the adult population will experience depression at some point in their lifetime. There are many types of depression, including premenstrual depression, postpartum depression, seasonal depression, and persistent depression (or dysthymia) that occur alongside other mental health issues such as bipolar disorder or schizophrenia. <sup><a href="https://www.mentalhelp.net/articles/depression-hotline/">[1]</a></sup></p>
+    <hr>
+    <h4 class="w3-center w3-padding-64">Depression is the greatest risk factor for suicidal youth. Among young adults aged 18–25 years, 8.3 percent have had serious thoughts of suicide. <sup><a href="https://www.healthline.com/health/depression/college-students#2">[2]</a></sup></h4>
+</div>
+    
+<div class="w3-row w3-center w3-dark-grey w3-padding-16">
+  <div class="w3-quarter w3-section">
+    <span class="w3-xlarge">80%</span><br>
+    of college students that feel overwhelmed by responsibility
+  </div>
+  <div class="w3-quarter w3-section">
+    <span class="w3-xlarge">1 out of 4</span><br>
+    college students have a diagnosable mental illness
+  </div>
+  <div class="w3-quarter w3-section">
+    <span class="w3-xlarge">50%</span><br>
+    of college students feel like anxiety challenges their academic performance
+  </div>
+  <div class="w3-quarter w3-section">
+    <span class="w3-xlarge">< 60%</span><br>
+    of college students experiencing mental health issues seek help
+  </div>
+</div>
+
+<!-- Third Parallax Image with Portfolio Text -->
+<div class="bgimg-2 w3-display-container w3-opacity-min" id="anxiety">
+  <div class="w3-display-middle">
+    <span class="w3-xxlarge w3-text-white w3-wide">ANXIETY</span>
+  </div>
+</div>
+
+<!-- Container (Anxiety Section) -->
+<div class="w3-content w3-container w3-padding-64" id="about">
+    <p class="w3-center">Anxiety is a feeling of worry, nervousness, or unease, typically about an imminent event or something with an uncertain outcome.
+    Anxiety is especially dangerous for students during this time in their lives and could lead to more dangerous mental issues. Anxiety can take on many different forms based on the person that it affects. Below are common forms and symptoms of anxiety.<sup><a href="https://www.psychiatry.org/patients-families/anxiety-disorders/what-are-anxiety-disorders">[3]</a></sup></p>
+    <br>
+    <hr style="width:50%;text-align:center;margin:auto">
+    <br>
+    <h4 class="w3-center">Panic Disorder</h4>
+    <p>The core symptom of panic disorder is recurrent panic attacks, an overwhelming combination of physical and psychological distress. During an attack several of these symptoms occur in combination:</p>
+    <ul>
+        <li>Palpitations, pounding heart or rapid heart rate</li>
+        <li>Sweating</li>
+        <li>Trembling or shaking</li>
+        <li>Feeling of shortness of breath or smothering sensations</li>
+        <li>Chest pain</li>
+        <li>Feeling dizzy, light-headed or faint</li>
+        <li>Feeling of choking</li>
+        <li>Numbness or tingling</li>
+        <li>Chills or hot flashes</li>
+        <li>Nausea or abdominal pains</li>
+        <li>Feeling detached</li>
+        <li>Fear of losing control</li>
+        <li>Fear of dying</li>
+    </ul>
+    <p>Because symptoms are so severe, many people who experience a panic attack may believe they are having a heart attack or other life-threatening illness and may go to a hospital ER. Panic attacks may be expected, such as a response to a feared object, or unexpected, apparently occurring for no reason. The mean age of onset of panic disorder is 22-23. Panic attacks may occur with other mental disorders such as depression or PTSD.</p>
+    <br>
+    <hr style="width:50%;text-align:center;margin:auto">
+    
+    <h4 class="w3-center">Phobias, Specific Phobia</h4>
+    <p>A specific phobia is excessive and persistent fear of a specific object, situation or activity that is generally not harmful. Patients know their fear is excessive, but they can’t overcome it. These fears cause such distress that some people go to extreme lengths to avoid what they fear. Examples are fear of flying or fear of spiders.</p>
+    <br>
+    <hr style="width:50%;text-align:center;margin:auto">
+    
+    <h4 class="w3-center">Agoraphobia</h4>
+    <p>Agoraphobia is the fear of being in situations where escape may be difficult or embarrassing, or help might not be available in the event of panic symptoms. The fear is out of proportion to the actual situation and lasts generally six months or more and causes problems in functioning. A person with agoraphobia experiences this fear in two or more of the following situations</p>
+    <ul>
+        <li>Using public transportation</li>
+        <li>Being in open spaces</li>
+        <li>Being in enclosed places</li>
+        <li>Standing in line or being in a crowd</li>
+        <li>Being outside the home alone</li>
+    </ul>
+    <p>The individual actively avoids the situation, requires a companion or endures with intense fear or anxiety. Untreated agoraphobia can become so serious that a person may be unable to leave the house. A person can only be diagnosed with agoraphobia if the fear is intensely upsetting, or if it significantly interferes with normal daily activities.</p>
+    <br>
+    <hr style="width:50%;text-align:center;margin:auto">
+    
+    <h4 class="w3-center">Social Anxiety Disorder</h4>
+    <p>A person with a social anxiety disorder has significant anxiety and discomfort about being embarrassed, humiliated, rejected or looked down on in social interactions. People with this disorder will try to avoid the situation or endure it with great anxiety. Common examples are an extreme fear of public speaking, meeting new people or eating/drinking in public. The fear or anxiety causes problems with daily functioning and lasts at least six months.</p>
+    <br>
+</div>
+    
+<div class="w3-row w3-center w3-dark-grey w3-padding-16">
+  <div class="w3-quarter w3-section">
+    <span class="w3-xlarge">1 out of 12</span><br>
+    college students make a suicide plan
+  </div>
+  <div class="w3-quarter w3-section">
+    <span class="w3-xlarge">25%</span><br>
+    of all serious adult psychiatric issues manifest themselves between the ages of 18 and 25
+  </div>
+  <div class="w3-quarter w3-section">
+    <span class="w3-xlarge">15%</span><br>
+    of college students that have commit suicide sought counselling on campus
+  </div>
+  <div class="w3-quarter w3-section">
+    <span class="w3-xlarge">>50%</span><br>
+    of college students experiencing suicidal thoughts tell a friend before consulting a mental health professional
+  </div>
+</div>
+    
+<!-- Fourth Parallax Image with Portfolio Text -->
+<div class="bgimg-2 w3-display-container w3-opacity-min" id="coping">
+  <div class="w3-display-middle">
+    <span class="w3-xxlarge w3-text-white w3-wide">COPING MECHANISMS</span>
+  </div>
+</div>
+
+<!-- Container (Coping Section) -->
+<div class="w3-content w3-container w3-padding-64">
+    <br>
+    <h4 class="w3-center">Antidepressants</h4>
+    <p>Selective serotonin reuptake inhibitors (SSRIs) are a common type of antidepressant that decreases the effects of depression and anxiety. Our brains consist of many chemical messengers (neurotransmitters) that carry signals between the cells in our brains. SSRIs are selective for Serotonin, a neurotransmitter, which regulates our mood, sleep, behavior, etc.</p>
+    <p>Reuptake involves the reabsorption of a neurotransmitter by the cell that originally secreted it. The Inhibitors, in this case, stop the reabsorption of serotonin thus increasing its levels.</p>
+    <br>
+    <br>
+    <iframe width="640" height="360" src="https://www.youtube.com/embed/G4r3qCkLUDQ" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style="display: block;margin: auto;"></iframe>
+    <br>
+    <h5 class="w3-center"><a href="https://www.webmd.com/depression/ss/slideshow-antidepressants">Visit WebMD to gain more information about antidepressants</a></h5>
+    <br>
+    <hr style="width:50%;text-align:center;margin:auto">
+    
+    <br>
+    <h4 class="w3-center">Resources at ECU</h4>
+    <hr style="width:10%;text-align:center;margin:auto">
+    <h6 class="w3-center"><b>Center for Counseling and Student Development (CCSD)</b></h6>
+    <p>Individual counseling is provided to students with up to 12 sessions in an academic year although most students benefit from 4-5 sessions.</p>
+    <p class="w3-center"><b>Contact Information</b></p>
+    <p class="w3-center">Phone Number<br> <a href="tel:+1-252-328-6661">(252) 328-6661</a></p>
+    <p class="w3-center">Regular Hours<br><em>Monday - Friday <br> 8:00 AM - 5:00 PM</em></p>
+    <p class="w3-center">Location<br><em>1st floor of Umstead Hall: Room 137</em></p>
+    <p class="w3-center"><a href="http://www.ecu.edu/cs-studentaffairs/counselingcenter/">For more information visit the CCSD website.</a></p>
+    
+    <br>
+    <h6 class="w3-center"><b>Student Recreation Center</b></h6>
+    <p>Offers various programs and events that promote wellness, including a 15-week online program that holds classes online via Blackboard.</p>
+    <p class="w3-center"><a href="http://www.ecu.edu/cs-studentaffairs/crw/Student-Recreation-Center.cfm">For more information visit the SRC website.</a></p>
+    <p class="w3-center"><a href="http://www.ecu.edu/cs-studentaffairs/crw/">Campus Recreation and Wellness Website</a></p>
+</div>
+
+<!-- Footer -->
+<footer class="w3-center w3-black w3-padding-64 w3-opacity w3-hover-opacity-off">
+  <a href="#home" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
+    <!--
+    <div class="w3-xlarge w3-section">
+    <i class="fa fa-facebook-official w3-hover-opacity"></i>
+    <i class="fa fa-instagram w3-hover-opacity"></i>
+    <i class="fa fa-snapchat w3-hover-opacity"></i>
+    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+    <i class="fa fa-twitter w3-hover-opacity"></i>
+    <i class="fa fa-linkedin w3-hover-opacity"></i>
+  </div>
+  -->
+</footer>
+ 
 <!-- Add Google Maps -->
-<div id="googleMap" style="height:400px;" class="w3-grayscale-max"></div>
 <script>
-function myMap() {
-  myCenter=new google.maps.LatLng(41.878114, -87.629798);
-  var mapOptions= {
-    center:myCenter,
-    zoom:12, scrollwheel: false, draggable: false,
-    mapTypeId:google.maps.MapTypeId.ROADMAP
-  };
-  var map=new google.maps.Map(document.getElementById("googleMap"),mapOptions);
 
-  var marker = new google.maps.Marker({
-    position: myCenter,
-  });
-  marker.setMap(map);
+// Change style of navbar on scroll
+window.onscroll = function() {myFunction()};
+function myFunction() {
+    var navbar = document.getElementById("myNavbar");
+    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+        navbar.className = "w3-bar" + " w3-card" + " w3-animate-top" + " w3-white";
+    } else {
+        navbar.className = navbar.className.replace(" w3-card w3-animate-top w3-white", "");
+    }
+}
+
+// Used to toggle the menu on small screens when clicking on the menu button
+function toggleFunction() {
+    var x = document.getElementById("navDemo");
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+    } else {
+        x.className = x.className.replace(" w3-show", "");
+    }
 }
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu-916DdpKAjTmJNIgngS6HL_kDIKU0aU&callback=myMap"></script>
@@ -205,53 +296,6 @@ function myMap() {
 To use this code on your website, get a free API key from Google.
 Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
 -->
-
-<!-- Footer -->
-<footer class="w3-container w3-padding-64 w3-center w3-opacity w3-light-grey w3-xlarge">
-  <i class="fa fa-facebook-official w3-hover-opacity"></i>
-  <i class="fa fa-instagram w3-hover-opacity"></i>
-  <i class="fa fa-snapchat w3-hover-opacity"></i>
-  <i class="fa fa-pinterest-p w3-hover-opacity"></i>
-  <i class="fa fa-twitter w3-hover-opacity"></i>
-  <i class="fa fa-linkedin w3-hover-opacity"></i>
-  <p class="w3-medium">Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
-</footer>
-
-<script>
-// Automatic Slideshow - change image every 4 seconds
-var myIndex = 0;
-carousel();
-
-function carousel() {
-    var i;
-    var x = document.getElementsByClassName("mySlides");
-    for (i = 0; i < x.length; i++) {
-       x[i].style.display = "none";  
-    }
-    myIndex++;
-    if (myIndex > x.length) {myIndex = 1}    
-    x[myIndex-1].style.display = "block";  
-    setTimeout(carousel, 4000);    
-}
-
-// Used to toggle the menu on small screens when clicking on the menu button
-function myFunction() {
-    var x = document.getElementById("navDemo");
-    if (x.className.indexOf("w3-show") == -1) {
-        x.className += " w3-show";
-    } else { 
-        x.className = x.className.replace(" w3-show", "");
-    }
-}
-
-// When the user clicks anywhere outside of the modal, close it
-var modal = document.getElementById('ticketModal');
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
-</script>
 
 </body>
 </html>
